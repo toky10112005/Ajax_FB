@@ -2,8 +2,8 @@ CREATE DATABASE Ajax_FB;
 USE Ajax_FB;
 
 CREATE TABLE membre(
-   Nom VARCHAR(10) AUTO_INCREMENT,
-    Email VARCHAR(50) ,
+     Nom VARCHAR(10),
+    Email VARCHAR(50),
     Pwd VARCHAR(20)
 );
 

@@ -36,6 +36,6 @@ window.addEventListener("load", function () {
     sendData();
 
     //redirection
-    //window.location.replace("../fonction.php/login.php");
+   // window.location.replace("../Pages/aff.php");
   });
 });

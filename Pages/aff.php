@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if($_SESSION['nom'] == "tsisy" || $SESSION['pwd'] == "tsisy"){
+        header("Location: index.php?error=1");
+        session_destroy();
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
