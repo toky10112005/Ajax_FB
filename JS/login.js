@@ -19,9 +19,7 @@ window.addEventListener("load", function () {
     });
 
     // Configurez la requête
-    
     xhr.open("POST", "../fonction/session.php");
-
     // Les données envoyées sont ce que l'utilisateur a mis dans le formulaire
     xhr.send(formData);
   }

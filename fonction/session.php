@@ -12,13 +12,14 @@ if(mysqli_num_rows($result) > 0){
     $row = mysqli_fetch_assoc($result); 
     
     $_SESSION['nom'] = $row['Nom']; 
-    $_SESSION['pwd'] = $row['Pwd'];
+    $_SESSION['id']=$row['id'];
+    //$_SESSION['pwd'] = $row['Pwd'];
     
     echo "Connexion réussie"; 
 } else {
-    
+
     $_SESSION['nom'] = "tsisy";
-    $_SESSION['pwd'] = "tsisy";
+    //$_SESSION['pwd'] = "tsisy";
 
     echo "Identifiants incorrects"; 
 }
