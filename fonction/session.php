@@ -15,7 +15,7 @@ if(mysqli_num_rows($result) > 0){
     $_SESSION['id']=$row['id'];
     //$_SESSION['pwd'] = $row['Pwd'];
     
-    echo "Connexion réussie"; 
+   // echo "Connexion réussie"; 
 } else {
 
     $_SESSION['nom'] = "tsisy";

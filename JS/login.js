@@ -9,8 +9,8 @@ window.addEventListener("load", function () {
     
     // Définissez ce qui se passe si la soumission s'est opérée avec succès
     xhr.addEventListener("load", function(event) {
-      $msg=(event.target.responseText!="")?event.target.responseText:"OK";
-      alert($msg);
+     
+      window.location.replace("../Pages/publier.php");
     });
 
     // Definissez ce qui se passe en cas d'erreur

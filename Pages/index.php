@@ -21,6 +21,6 @@
     </form>
 
    
-   <a href="publier.php">any</a>
+   <!-- <a href="publier.php">any</a> -->
 </body>
 </html>

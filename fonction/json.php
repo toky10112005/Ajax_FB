@@ -13,7 +13,7 @@ function requete($requete, $connexion){
 
 requete($sql, $conn);
 
-    $sql2="SELECT * FROM publication WHERE id_membre='$_SESSION[id]' ORDER BY id DESC";
+    $sql2="SELECT * FROM publication WHERE  ORDER BY id DESC";
 
     $resultat=mysqli_query($conn,$sql2);
     $valiny=[];

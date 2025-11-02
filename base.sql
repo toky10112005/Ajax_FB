@@ -18,3 +18,12 @@ CREATE TABLE publication(
     auteur VARCHAR(10)
 );
 
+CREATE TABLE commentaire(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pub INT,
+    id_membre INT,
+    contenu TEXT,
+    date_com TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    auteur VARCHAR(10)
+);
+

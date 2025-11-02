@@ -3,7 +3,7 @@ function submitForm()
     
     var xhr = new XMLHttpRequest();
 
-    var pub=document.getElementById("pub").value;
+    var coms=document.getElementById("coms").value;
 
      xhr.onreadystatechange  = function() 
     { 
@@ -12,7 +12,9 @@ function submitForm()
             var retour = JSON.parse(xhr.responseText);
            
             var resultat = document.getElementById("affichage");
-            resultat.innerHTML=""; 
+            resultat.innerHTML="";
+
+            console.log(retour);
 
             retour.forEach(el => {
         var div=document.createElement("div");
@@ -25,19 +27,12 @@ function submitForm()
                 p2.textContent=el.auteur;
 
                 var p3=document.createElement("p");
-                p3.textContent=el.date_pub;
+                p3.textContent=el.date_com;
 
-                var button=document.createElement("button");
-                button.textContent="Commenter";
-                var a=document.createElement("a");
-                a.href="../fonction/traitement_coms.php?id_pub="+el.id;
-            a.appendChild(button);
-            
                
                 div.appendChild(p1);
                 div.appendChild(p2);
                 div.appendChild(p3);
-                div.appendChild(a);
             });
             
         } else {
@@ -46,7 +41,7 @@ function submitForm()
 		}
     }; 
   //XMLHttpRequest.open(method, url, async)
-  var url="../fonction/json.php?pub="+pub;
+  var url="../fonction/json2.php?coms="+encodeURIComponent(coms);
    xhr.open("GET", url,  true); 
    
    //XMLHttpRequest.send(body)
