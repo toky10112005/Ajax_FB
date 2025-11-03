@@ -1,20 +1,21 @@
 <?php
     function dbconnect()
     {
-        static $connect = null;
+        $host="localhost";
+        $dbname="Ajax_FB";
+        $user="root";
+        $pass="P@ssData";
+     try{
+         $DBH=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
 
-        if ($connect === null) {
-            $connect = mysqli_connect('localhost', 'root','P@ssData', 'Ajax_FB');
+         //gestion des erreurs
+        $DBH->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT );
+        
 
-            if (!$connect) {
-
-                die('Erreur de connexion à la base de données : ' . mysqli_connect_error());
-            }
-
-
-            mysqli_set_charset($connect, 'utf8mb4');
-        }
-
-        return $connect;
+         return $DBH;
+     }
+    catch(PDExeption$e){
+         echo $e->getMessage();
+     }
     }
 ?>

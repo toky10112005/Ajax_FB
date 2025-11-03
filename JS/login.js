@@ -9,7 +9,6 @@ window.addEventListener("load", function () {
     
     // Définissez ce qui se passe si la soumission s'est opérée avec succès
     xhr.addEventListener("load", function(event) {
-     
       window.location.replace("../Pages/publier.php");
     });
 

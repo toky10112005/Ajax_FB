@@ -3,7 +3,15 @@
     session_start();
     $table="publication";
     $condition="id='$_SESSION[id_pub]'";
-    $pub=select($table,$condition);    
+    $plus="";
+    $pub=select($table,$condition,$plus); 
+
+    
+    
+    $table2="commentaire";
+    $condition2="id_pub='$_SESSION[id_pub]'";
+    $plus2="ORDER BY id DESC";
+    $coms=select($table2,$condition2,$plus2); 
     
    
 ?>
@@ -24,6 +32,19 @@
         <input type="button" value="Valider" onclick="submitForm()">
     </form>
 
-    <div id="affichage"></div>
+    <div id="affichage">
+        <?php
+           foreach($coms as $val){
+                ?>
+
+                <div>
+                    <p><?= $val['contenu']?></p>
+                    <p><?= $val['date_com']?></p>
+                    <p><?= $val['auteur']?></p>
+                </div>
+             <?php   
+           }
+        ?>
+    </div>
 </body>
 </html>

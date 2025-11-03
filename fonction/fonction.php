@@ -1,25 +1,32 @@
 <?php
 include("con.php");
-    function select($table_name,$condition){
-        $conn=dbconnect();
-        if($condition==""){
-            $condition="1";
-        }
-        $sql="SELECT * FROM $table_name WHERE $condition";
-        $result=mysqli_query($conn,$sql);
+
+    function select($table_name,$condition,$plus){
+        $BDH=dbconnect();
+            if($condition==""){
+                 $condition="1";
+            }
+
+        $STH=$BDH -> prepare("SELECT * FROM $table_name WHERE $condition $plus");
+
+        //$STH -> bindParam(1,$condition);
+
+        $STH->execute();
+        $STH->setFetchMode(PDO::FETCH_ASSOC);
+
         $valiny=[];
-        while($row=mysqli_fetch_assoc($result)){
+        while($row=$STH->fetch()){
             $valiny[]=$row;
         }
-      //  mysqli_close($conn);
         return $valiny;
+
     }
 
 
-    function insert($table_name,$colonnes,$values){
-        $conn=dbconnect();
-        $sql="INSERT INTO $table_name ($colonnes) VALUES ($values)";
-        mysqli_query($conn,$sql);
-        //mysqli_close($conn);
+//$values=array(val1,val2...valn);
+    function insert($table_name,$colones,$values,$param){
+        $BDH=dbconnect();
+        $STH=$BDH -> prepare("INSERT INTO $table_name($colones) VALUES($param)");
+        $STH ->execute($values);
     }
 ?>

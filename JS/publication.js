@@ -32,7 +32,6 @@ function submitForm()
                 var a=document.createElement("a");
                 a.href="../fonction/traitement_coms.php?id_pub="+el.id;
             a.appendChild(button);
-            
                
                 div.appendChild(p1);
                 div.appendChild(p2);

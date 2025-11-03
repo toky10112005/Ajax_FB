@@ -4,23 +4,32 @@ include("con.php");
 
 $nom = $_POST['nom'];
 $pwd = $_POST['pwd'];
+try{
+    $DBH=dbconnect();
+  $STH = $DBH -> prepare("SELECT * FROM membre WHERE Nom=? AND Pwd=?");
 
-$sql = "SELECT * FROM membre WHERE Nom='$nom' AND Pwd='$pwd'";
-$result = mysqli_query(dbconnect(), $sql);
+    $STH->bindParam(1, $nom);
+    $STH->bindParam(2, $pwd);
 
-if(mysqli_num_rows($result) > 0){
-    $row = mysqli_fetch_assoc($result); 
-    
-    $_SESSION['nom'] = $row['Nom']; 
-    $_SESSION['id']=$row['id'];
-    //$_SESSION['pwd'] = $row['Pwd'];
-    
-   // echo "Connexion réussie"; 
-} else {
+  $STH->execute();
+  $STH->setFetchMode(PDO::FETCH_ASSOC);
 
-    $_SESSION['nom'] = "tsisy";
-    //$_SESSION['pwd'] = "tsisy";
+  $row=$STH->fetch();
 
-    echo "Identifiants incorrects"; 
+    if($row){
+      $_SESSION['nom'] = $row['Nom'];
+      $_SESSION['id'] = $row['id'];
+    }
+    else{
+      $_SESSION['nom'] = "tsisy";
+      $_SESSION['pwd'] = "tsisy";
+    }
+  }
+  catch(PDOException $e) {
+    error_log("Erreur de connexion: " . $e->getMessage());
+    $_SESSION['login_error'] = "Erreur technique";
+    echo "error";
 }
+
+
 ?>
